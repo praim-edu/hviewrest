@@ -55,7 +55,7 @@ while ($true) {
         # If a request is sent to http:// :8000/namesdata
         if ($requestvars[3] -eq "namesdata" -or $requestvars[3] -eq "sessiondata") {
             # Esegui la funzione Get-HViewQueryResults con argomento in ingresso
-            $result = Get-HViewQueryResults -server $args[0] -user $args[1] -password $args[2] -domain $args[3] -command $requestvars[3] -property $requestvars[4] -value $requestvars[5]
+            $result = Get-HViewQueryResults -server $($args[0]) -user $($args[1]) -password $($args[2]) -domain $($args[3]) -command $requestvars[3] -property $requestvars[4] -value $requestvars[5]
             # Convert the returned data to JSON and set the HTTP content type to JSON
             $message = ConvertTo-Json $result;
             $response.ContentType = 'application/json';
