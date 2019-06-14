@@ -56,10 +56,8 @@ function Get-HViewQueryResults
     }
     #Get disk io
     elseif ($entity -match "diskio") {
-         $disk = Get-Counter -Counter "\PhysicalDisk(0 C:)\Disk Transfers/sec"
          #numero di operazioni per secondo
-         $diskIO = $disk.CounterSamples[0].CookedValue
-         return $diskIO
+        return (Get-WmiObject Win32_PerfFormattedData_PerfProc_Process)[0].IODataOperationsPersec
     } else {
         # Ignora errori certificati
         #Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -ParticipateInCeip $false
